@@ -12,7 +12,7 @@ import seaborn as sns
 from prophet import Prophet
 
 #create a connection to SQL database
-cnx = mysql.connector.connect(user='root', password='tinofante',host='127.0.0.1', database='sys')
+cnx = mysql.connector.connect(user='root', password='$',host='127.0.0.1', database='sys')
 # name a variable to manage the connection
 cursor = cnx.cursor()
 
@@ -29,11 +29,6 @@ month = pd.DataFrame(res,columns=['id','ups_account_number','tpu_account_number'
 #an attempt to clear nans in month dataframe
 month.replace('nan', np.nan)
 
-#print(month.dtypes)
-#my_conn = create_engine("mysql:MySQLdb//root:tinofante@127.0.0.1/water")
-#my_data = pd.read_sql('select * from water',my_conn)
-#print(res)
-#print(month)
 total_null = month.isnull().sum().sort_values(ascending=False)
 #print(total_null)
 
